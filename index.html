@@ -1,0 +1,1095 @@
+<title>게임&amp;VR 학과 운영 회의</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="인덕대학교 게임&amp;VR콘텐츠디자인학과 학과 운영 회의 웹 프레젠테이션">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Sora:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<script>
+/* =====================================================================
+   ★ 회의 데이터 — 내용은 여기만 고치면 됩니다 (디자인 코드와 분리)
+   - 빈 문자열("")로 두면 화면에 '추후 입력' 표시가 나옵니다.
+   - photo: 사진 경로(예: "images/president.jpg")를 넣으면 프로필에 들어갑니다.
+   - 배열에 항목을 추가하면 카드·타임라인이 자동으로 늘어납니다.
+   ===================================================================== */
+window.MEETING_DATA = {
+  meta: {
+    univ: "인덕대학교",
+    dept: "게임&VR콘텐츠디자인학과",
+    subtitle: "학과 운영 회의",
+    date: "",            // 회의 일자 (예: "2026. 11. 18 (수)")
+    place: "",           // 회의 장소
+    presenter: ""        // 발표자
+  },
+
+  council: {
+    lead: "새롭게 학과 학생자치를 이끌 차기 학회장과 대의원을 소개합니다.",
+    result: "",          // 당선 결과 요약 (예: 투표율·찬성률)
+    members: [
+      { role: "차기 학회장", en: "PRESIDENT", name: "", info: "", photo: "" },
+      { role: "차기 대의원", en: "REPRESENTATIVE", name: "", info: "", photo: "" }
+    ],
+    org: "",             // 새로운 학생자치 조직 소개 (한 줄 설명, 선택)
+    departments: [       // 학생자치 부서 — head: 부장 이름
+      { name: "관리부", en: "MANAGEMENT", head: "" },
+      { name: "디자인부", en: "DESIGN", head: "" },
+      { name: "기획부", en: "PLANNING", head: "" },
+      { name: "총무부", en: "GENERAL AFFAIRS", head: "" }
+    ],
+    roles: [
+      { who: "학회장", text: "학과 학생회를 대표하고 학과 행사와 학생자치 운영을 총괄합니다." },
+      { who: "대의원", text: "학과 학생들의 의견을 대의원회에 전달하고 학생회 사업과 예산 심의에 참여합니다." }
+    ],
+    handover: ["운영 자료·계정·예산 내역 전달", "진행 중인 사업과 일정 공유", "인수인계 일정 확정"],
+    direction: ""        // 향후 학과 학생자치 운영 방향
+  },
+
+  exhibition: {
+    purpose: "학과의 한 해 결과물을 보여 주는 졸업전시를 체계적으로 준비하고 운영하기 위해 위원회를 구성합니다.",
+    chair: "",           // 위원장 이름
+    teams: [             // 팀 구성(안) — lead: 담당자 이름
+      { name: "기획·운영", tasks: "전시 기획, 일정·공간 관리", lead: "" },
+      { name: "디자인·홍보", tasks: "포스터·도록·온라인 홍보", lead: "" },
+      { name: "설치·기술", tasks: "작품 설치, 장비·PC 세팅", lead: "" },
+      { name: "영상·기록", tasks: "전시 촬영과 아카이브", lead: "" },
+      { name: "재무", tasks: "예산 집행과 정산", lead: "" }
+    ],
+    process: [           // 전시 준비 과정 — date 비워 두면 '일정 미정'
+      { step: "위원회 구성", date: "" },
+      { step: "전시 기획·공간 확정", date: "" },
+      { step: "작품 점검", date: "" },
+      { step: "홍보물 제작", date: "" },
+      { step: "설치·리허설", date: "" },
+      { step: "전시 운영·철수", date: "" }
+    ],
+    budget: [            // 예산 및 운영 논의
+      { label: "전체 예산 규모", value: "" },
+      { label: "공간 대관·장비 대여", value: "" },
+      { label: "운영 인원 배치", value: "" }
+    ]
+  },
+
+  events: {
+    direction: ["누구나 부담 없이 참여", "학년 간 교류 활성화", "전공을 살린 프로그램"],
+    list: [              // 행사 아이디어(안) — 항목을 추가하면 카드가 늘어납니다
+      { tag: "NETWORKING", title: "선후배 교류의 밤", desc: "학년과 관계없이 함께 어울리며 서로를 알아가는 자리", target: "", way: "", date: "", prep: "" },
+      { tag: "GAME JAM", title: "학과 게임잼", desc: "짧은 기간 팀을 꾸려 하나의 게임을 완성하는 전공 이벤트", target: "", way: "", date: "", prep: "" },
+      { tag: "SHOWCASE", title: "작업 공유회", desc: "각자의 작업과 포트폴리오를 공유하고 피드백을 나누는 자리", target: "", way: "", date: "", prep: "" }
+    ]
+  },
+
+  esports: {
+    purpose: "게임을 만드는 학과답게, 함께 즐기며 교류하는 학과 e스포츠 대회를 엽니다.",
+    info: [
+      { k: "PURPOSE", label: "개최 목적", value: "학과 구성원의 친목과 교류" },
+      { k: "GAME", label: "대회 종목", value: "" },
+      { k: "ENTRY", label: "참가 대상 · 신청 방법", value: "" },
+      { k: "TEAM", label: "팀 구성 · 참가 방식", value: "" },
+      { k: "FORMAT", label: "경기 진행 방식", value: "" },
+      { k: "DATE", label: "대회 일정", value: "" },
+      { k: "STAFF", label: "심판 · 운영 인원", value: "" },
+      { k: "PRIZE", label: "시상 · 상품", value: "" }
+    ],
+    teams: ["", "", "", ""]   // 대진표 팀 이름 (4강)
+  },
+
+  plan: {
+    timeline: [          // 향후 주요 일정 — date 비워 두면 '일정 미정'
+      { title: "학생자치 인수인계", date: "" },
+      { title: "졸업전시위원회 활동 시작", date: "" },
+      { title: "학과 이벤트", date: "" },
+      { title: "학과 e스포츠 대회", date: "" },
+      { title: "졸업전시", date: "" }
+    ],
+    decisions: [],       // 확정된 결정 사항 (회의 중 확정되면 문장으로 추가)
+    discuss: [
+      { topic: "학생자치", text: "인수인계 일정과 방식" },
+      { topic: "졸업전시", text: "위원회 담당자와 예산" },
+      { topic: "학과 이벤트", text: "우선 진행할 행사 선정" },
+      { topic: "e스포츠", text: "종목과 대회 일정" }
+    ],
+    tasks: [             // 담당자별 후속 업무
+      { task: "졸업전시위원회 담당자 확정", owner: "", due: "" },
+      { task: "학과 이벤트 세부 계획 작성", owner: "", due: "" },
+      { task: "e스포츠 대회 공지 준비", owner: "", due: "" }
+    ]
+  },
+
+  closing: {
+    goals: ["학생자치 활성화", "졸업전시의 성공적인 운영", "학과 행사의 성공적인 운영"],
+    message: "오늘 나눈 의견을 정리해 공유하고, 다음 회의에서 진행 상황을 함께 확인하겠습니다."
+  }
+};
+</script>
+
+<style>
+/* Layout: 1920×1080 기준 한 장면씩 전환 · 3D 캔버스(뒤) + 선명한 HTML 정보(앞) · 장면마다 다른 그리드, 같은 토큰 */
+:root{
+  color-scheme: light;
+  --white:#FFFFFF; --mist:#F1F6FC; --navy:#183766; --navy-2:#2F5A96; --sky:#BBD7F4;
+  --ink:#0F2347; --gray:#5B687E; --gray-2:#8E99AB; --line:rgba(24,55,102,.10);
+  --glass:rgba(255,255,255,.60); --glass-edge:rgba(255,255,255,.95);
+  --shadow:inset 0 1px 0 rgba(255,255,255,1),0 30px 70px -34px rgba(24,55,102,.30),0 2px 10px rgba(24,55,102,.05);
+  --display:"Sora","IBM Plex Sans KR",system-ui,sans-serif;
+  --kr:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --gx:70%; --gy:38%;
+}
+@property --gx{syntax:"<percentage>";inherits:true;initial-value:70%}
+@property --gy{syntax:"<percentage>";inherits:true;initial-value:38%}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--kr);-webkit-font-smoothing:antialiased;word-break:keep-all;
+  -webkit-user-select:none;user-select:none;transition:--gx 1.8s var(--ease),--gy 1.8s var(--ease)}
+body[data-page="0"]{--gx:72%;--gy:36%} body[data-page="1"]{--gx:30%;--gy:58%} body[data-page="2"]{--gx:22%;--gy:56%}
+body[data-page="3"]{--gx:80%;--gy:24%} body[data-page="4"]{--gx:26%;--gy:62%} body[data-page="5"]{--gx:60%;--gy:30%} body[data-page="6"]{--gx:50%;--gy:50%}
+body.grab{cursor:grab} body.grabbing{cursor:grabbing}
+
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(44% 52% at var(--gx) var(--gy),rgba(187,215,244,.66) 0%,rgba(214,231,249,.4) 40%,rgba(241,246,252,0) 74%),
+    radial-gradient(36% 34% at calc(100% - var(--gx)) 96%,rgba(187,215,244,.32),rgba(241,246,252,0) 70%),
+    linear-gradient(180deg,var(--white) 0%,var(--white) 34%,var(--mist) 100%)}
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(24,55,102,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(24,55,102,.045) 1px,transparent 1px);
+  background-size:80px 80px;background-position:center;
+  -webkit-mask-image:radial-gradient(ellipse 62% 58% at var(--gx) 62%,#000 6%,transparent 70%);mask-image:radial-gradient(ellipse 62% 58% at var(--gx) 62%,#000 6%,transparent 70%)}
+#gl{position:fixed;inset:0;z-index:1;display:block;width:100%;height:100%}
+.sweep{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.sweep i{position:absolute;top:-10%;bottom:-10%;left:0;width:46vw;transform:translateX(-60vw) skewX(-14deg);opacity:0;
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(187,215,244,.26) 35%,rgba(255,255,255,.7) 55%,rgba(255,255,255,0))}
+.sweep.go i{animation:sweep 1.25s var(--ease)}
+@keyframes sweep{0%{transform:translateX(-60vw) skewX(-14deg);opacity:0}15%{opacity:1}100%{transform:translateX(130vw) skewX(-14deg);opacity:0}}
+
+/* ---------- 공통 ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font:500 12px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--navy)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--navy);box-shadow:0 0 0 5px rgba(187,215,244,.6)}
+.eyebrow b{font-weight:500;color:var(--gray-2)}
+.h-l{margin:0;font:700 clamp(30px,2.55vw,52px)/1.18 var(--kr);letter-spacing:-.04em;color:var(--ink);text-wrap:balance}
+.lead{margin:0;max-width:36em;font:400 clamp(15px,.98vw,19px)/1.75 var(--kr);color:var(--gray)}
+.grad{background:linear-gradient(95deg,var(--navy) 10%,var(--navy-2) 70%,#5D8BC9);-webkit-background-clip:text;background-clip:text;color:transparent}
+.glass{background:linear-gradient(160deg,rgba(255,255,255,.84),var(--glass));-webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4);
+  border:1px solid var(--glass-edge);box-shadow:var(--shadow);border-radius:24px}
+.lbl{font:500 11px/1 var(--mono);letter-spacing:.2em;color:var(--gray-2);text-transform:uppercase}
+.ph{display:grid;gap:16px;align-content:start}
+.tbd{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;border:1px dashed rgba(47,90,150,.45);background:rgba(241,246,252,.8);
+  font:500 12px/1.3 var(--kr);color:#4E6E9C;white-space:nowrap}
+.tbd::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sky)}
+.draft{display:inline-flex;padding:4px 9px;border-radius:999px;background:rgba(187,215,244,.5);font:500 10px/1 var(--mono);letter-spacing:.14em;color:var(--navy)}
+
+.pg{position:fixed;inset:0;z-index:2;display:grid;visibility:hidden;pointer-events:none;overflow-x:hidden;overflow-y:auto;
+  padding-top:calc(118px + env(safe-area-inset-top,0px));padding-bottom:calc(122px + env(safe-area-inset-bottom,0px));
+  padding-left:max(16px,6vw,env(safe-area-inset-left,0px));padding-right:max(16px,6vw,env(safe-area-inset-right,0px));scrollbar-width:none}
+.pg::-webkit-scrollbar{display:none}
+.pg.on{visibility:visible;pointer-events:auto}
+.pg.out{visibility:visible}
+.pg .rv{opacity:0;transform:translateY(28px);filter:blur(6px);transition:opacity .75s ease,transform 1s var(--ease),filter .8s ease}
+.pg.on .rv{opacity:1;transform:none;filter:none;transition-delay:calc(var(--d,0) * 75ms + 460ms)}
+.pg.out .rv{opacity:0;transform:translateY(-14px);filter:blur(4px);transition-duration:.4s;transition-delay:0s}
+
+/* ===== PAGE 01 · INTRO ===== */
+.p-intro{grid-template-rows:1fr auto;row-gap:5vh}
+.intro-top{display:grid;gap:26px;align-content:center;max-width:min(58vw,1100px)}
+.display{margin:0;font:600 clamp(48px,5.3vw,104px)/.98 var(--display);letter-spacing:-.045em;color:var(--ink)}
+.intro-sub{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.intro-sub .kr-sub{font:700 clamp(24px,2vw,38px)/1.2 var(--kr);letter-spacing:-.04em;color:var(--navy)}
+.intro-sub .dept{padding-left:18px;border-left:1px solid rgba(24,55,102,.2);font:500 clamp(14px,1vw,18px)/1.4 var(--kr);color:var(--gray)}
+.meta{display:flex;flex-wrap:wrap;gap:12px}
+.meta .glass{display:grid;gap:9px;padding:14px 20px;border-radius:18px;min-width:150px}
+.meta small{font:500 10px/1 var(--mono);letter-spacing:.22em;color:var(--gray-2)}
+.meta b{font:600 16px/1.2 var(--kr);color:var(--ink)}
+.intro-agenda{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:stretch}
+.ag-label{display:grid;align-content:center;gap:8px;padding-right:28px;border-right:1px solid rgba(24,55,102,.14)}
+.ag-label b{font:700 18px/1.3 var(--kr);letter-spacing:-.02em}
+.ag-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.ag-list button{width:100%;height:100%;display:grid;gap:10px;align-content:start;text-align:left;padding:18px 20px;border-radius:20px;cursor:pointer;color:inherit;font:inherit;transition:transform .45s var(--ease),box-shadow .45s}
+.ag-list button:hover{transform:translateY(-6px);box-shadow:inset 0 1px 0 #fff,0 36px 70px -30px rgba(24,55,102,.42)}
+.ag-list .n{font:300 30px/1 var(--display);letter-spacing:-.04em;color:var(--navy)}
+.ag-list b{font:600 clamp(14px,1vw,18px)/1.35 var(--kr);letter-spacing:-.02em}
+.ag-list small{font:500 10px/1.3 var(--mono);letter-spacing:.14em;color:var(--gray-2)}
+
+/* ===== PAGE 02 · STUDENT COUNCIL ===== */
+.p-council{grid-template-columns:minmax(0,7fr) minmax(0,5fr);column-gap:4.5vw;align-content:center}
+.council-left{display:grid;gap:30px;align-content:start}
+.profiles{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:22px;max-width:780px}
+.profile{padding:12px;border-radius:28px;display:grid;gap:0}
+.photo{position:relative;aspect-ratio:4/5;max-height:44vh;width:100%;border-radius:20px;overflow:hidden;
+  background:radial-gradient(70% 60% at 50% 30%,#E3EEFA,#C9DDF4 70%,#B6CFEE);box-shadow:inset 0 0 0 1px rgba(255,255,255,.8)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph-empty{position:absolute;inset:0;display:grid;place-items:end center}
+.ph-empty svg{width:72%;height:auto;opacity:.9}
+.ph-empty span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.75);
+  font:500 11px/1 var(--mono);letter-spacing:.16em;color:var(--navy);white-space:nowrap}
+.role-badge{position:absolute;left:12px;top:12px;padding:8px 13px;border-radius:999px;background:var(--navy);color:var(--white);font:600 13px/1 var(--kr);box-shadow:0 10px 20px -10px rgba(24,55,102,.8)}
+.pinfo{display:grid;gap:8px;padding:18px 10px 8px}
+.pinfo small{font:500 10px/1 var(--mono);letter-spacing:.22em;color:var(--navy)}
+.pinfo b{font:700 clamp(22px,1.7vw,32px)/1.2 var(--kr);letter-spacing:-.03em}
+.pinfo b .tbd{font-size:14px}
+.pinfo > .tbd{justify-self:start}
+.result{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.council-right{display:grid;gap:14px;align-content:center}
+.info-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;padding:20px 24px;border-radius:22px}
+.info-row .k{display:grid;gap:8px;align-content:start}
+.info-row .k small{font:500 10px/1 var(--mono);letter-spacing:.2em;color:var(--gray-2)}
+.info-row .k b{font:700 17px/1.3 var(--kr);letter-spacing:-.02em;color:var(--navy)}
+.info-row p{margin:0;font:400 15px/1.7 var(--kr);color:var(--gray)}
+.info-row ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.info-row li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;font:400 15px/1.6 var(--kr);color:var(--gray)}
+.info-row li b{font-weight:600;color:var(--ink)}
+.info-row li::before{content:"";width:6px;height:6px;margin-top:9px;border-radius:50%;background:var(--sky)}
+.info-row li.r::before{display:none}
+.org-body{display:grid;gap:12px;min-width:0}
+.depts{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:8px}
+.dept-tile{display:grid;gap:6px;align-content:start;padding:12px 12px 13px;border-radius:14px;background:rgba(255,255,255,.8);border:1px solid rgba(24,55,102,.08)}
+.dept-tile small{font:500 9px/1.2 var(--mono);letter-spacing:.06em;color:var(--gray-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dept-tile b{font:700 16px/1.2 var(--kr);letter-spacing:-.02em;color:var(--navy)}
+.dept-tile .tbd{justify-self:start;font-size:10.5px;padding:3px 7px}
+@media (max-width:640px){.depts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ===== PAGE 03 · EXHIBITION ===== */
+.p-exhib{grid-template-columns:minmax(0,4fr) minmax(0,8fr);column-gap:3.5vw}
+.ex-left{display:flex;flex-direction:column;gap:22px;min-height:0}
+.ex-stage{flex:1;min-height:150px}
+.budget{padding:24px 26px;border-radius:26px;color:var(--white);
+  background:radial-gradient(80% 70% at 92% 0%,rgba(187,215,244,.4),rgba(187,215,244,0) 62%),linear-gradient(155deg,#2A5491 0%,var(--navy) 55%,#11284D 100%);
+  box-shadow:0 40px 80px -40px rgba(24,55,102,.7),inset 0 1px 0 rgba(255,255,255,.2)}
+.budget small{font:500 10px/1 var(--mono);letter-spacing:.22em;color:var(--sky)}
+.budget h3{margin:10px 0 14px;font:700 20px/1.3 var(--kr);letter-spacing:-.02em}
+.budget dl{margin:0;display:grid;gap:0}
+.budget dl div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-top:1px solid rgba(187,215,244,.2)}
+.budget dt{font:400 14px/1.4 var(--kr);color:rgba(255,255,255,.8)}
+.budget dd{margin:0;font:600 14px/1.4 var(--kr)}
+.budget .tbd{background:rgba(255,255,255,.08);border-color:rgba(187,215,244,.5);color:var(--sky)}
+.ex-right{display:grid;gap:18px;grid-template-rows:auto auto;align-content:center}
+.org{padding:26px 28px 28px;border-radius:28px}
+.org-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.org-head b{font:700 18px/1 var(--kr);letter-spacing:-.02em}
+.org-root{justify-self:center;display:grid;justify-items:center;gap:6px;width:min(260px,100%);margin:0 auto;padding:16px 22px;border-radius:18px;color:var(--white);
+  background:linear-gradient(150deg,var(--navy-2),var(--navy));box-shadow:0 18px 34px -18px rgba(24,55,102,.8)}
+.org-root small{font:500 10px/1 var(--mono);letter-spacing:.22em;color:var(--sky)}
+.org-root b{font:700 18px/1.2 var(--kr)}
+.org-root .tbd{background:rgba(255,255,255,.1);border-color:rgba(187,215,244,.5);color:var(--sky)}
+.org-stem{width:2px;height:22px;margin:0 auto;background:var(--sky)}
+.org-teams{position:relative;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;padding-top:22px}
+.org-teams::before{content:"";position:absolute;top:0;height:2px;background:var(--sky);left:calc(50% / var(--n));right:calc(50% / var(--n))}
+.team{position:relative;display:grid;gap:7px;align-content:start;padding:16px 14px;border-radius:18px;background:rgba(255,255,255,.75);border:1px solid rgba(24,55,102,.08)}
+.team::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--sky)}
+.team small{font:500 10px/1 var(--mono);letter-spacing:.18em;color:var(--gray-2)}
+.team b{font:700 16px/1.3 var(--kr);letter-spacing:-.02em;color:var(--navy)}
+.team p{margin:0;font:400 13px/1.55 var(--kr);color:var(--gray)}
+.team .tbd{justify-self:start;margin-top:4px;font-size:11px}
+.steps-card{padding:24px 28px;border-radius:28px}
+.steps{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:10px;counter-reset:s}
+.steps li{position:relative;display:grid;gap:8px;padding-top:40px}
+.steps li::before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;top:0;left:0;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  background:var(--white);border:1.5px solid var(--sky);font:500 11px/1 var(--display);color:var(--navy)}
+.steps li:first-child::before{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.steps li::after{content:"";position:absolute;top:15px;left:38px;right:-4px;height:1.5px;background:linear-gradient(90deg,var(--sky),rgba(187,215,244,.3))}
+.steps li:last-child::after{display:none}
+.steps b{font:600 15px/1.35 var(--kr);letter-spacing:-.02em}
+.steps .tbd{justify-self:start;font-size:11px;padding:3px 8px}
+
+/* ===== PAGE 04 · EVENTS ===== */
+.p-events{grid-template-rows:auto auto;align-content:center;row-gap:4vh}
+.ev-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:3vw;align-items:end}
+.ev-head-r{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:20px;align-items:end}
+.dirs{display:grid;gap:10px}
+.dirs div{display:flex;align-items:center;gap:14px;padding:13px 18px;border-radius:16px}
+.dirs i{font:300 18px/1 var(--display);font-style:normal;color:var(--navy)}
+.dirs b{font:600 15px/1.3 var(--kr)}
+.ev-stage{height:200px}
+.ev-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-content:start}
+.ev{display:grid;grid-template-rows:auto auto 1fr;gap:14px;padding:24px;border-radius:28px}
+.ev-top{display:flex;justify-content:space-between;align-items:center}
+.ev-top small{font:500 10px/1 var(--mono);letter-spacing:.2em;color:var(--navy)}
+.ev h3{margin:0;font:700 clamp(20px,1.45vw,27px)/1.25 var(--kr);letter-spacing:-.035em}
+.ev .desc{margin:6px 0 0;font:400 14px/1.65 var(--kr);color:var(--gray)}
+.ev dl{margin:0;display:grid;align-content:end}
+.ev dl div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.ev dt{font:500 13px/1.3 var(--kr);color:var(--gray)}
+.ev dd{margin:0;font:600 13px/1.3 var(--kr);text-align:right}
+.ev dd .tbd{font-size:11px;padding:3px 8px}
+.ev.add{place-content:center;justify-items:center;text-align:center;gap:12px;background:rgba(255,255,255,.35);border:1.5px dashed rgba(47,90,150,.35);box-shadow:none;backdrop-filter:none}
+.ev.add .plus{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--white);color:var(--navy);font:300 28px/1 var(--display);box-shadow:0 14px 28px -14px rgba(24,55,102,.5)}
+.ev.add b{font:600 16px/1.3 var(--kr)}
+.ev.add p{margin:0;font:400 13px/1.6 var(--kr);color:var(--gray)}
+
+/* ===== PAGE 05 · E-SPORTS ===== */
+.p-esports{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:3.5vw}
+.es-left{display:flex;flex-direction:column;justify-content:center;gap:22px}
+.es-title{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.es-stage{width:220px;height:150px;flex:none}
+.bracket{height:clamp(300px,44vh,480px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr) minmax(0,1fr);align-items:center;gap:22px;padding:24px;border-radius:28px;position:relative}
+.bracket > .lbl{position:absolute;left:24px;top:20px}
+.bk-col{position:relative;display:grid;gap:26px}
+.match{display:grid;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.85);border:1px solid rgba(24,55,102,.1);box-shadow:0 12px 24px -18px rgba(24,55,102,.5)}
+.match span{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;font:600 13px/1.2 var(--kr)}
+.match span + span{border-top:1px solid var(--line)}
+.match span em{font:500 10px/1.2 var(--mono);font-style:normal;color:var(--gray-2);letter-spacing:.1em}
+.match .tbd{font-size:11px;padding:2px 8px}
+.bk-col::after{content:"";position:absolute;top:25%;bottom:25%;width:14px;border:2px solid var(--sky)}
+.bk-col.l::after{right:-16px;border-left:0;border-radius:0 10px 10px 0}
+.bk-col.r::after{left:-16px;border-right:0;border-radius:10px 0 0 10px}
+.final{display:grid;justify-items:center;gap:8px;text-align:center;align-self:stretch;align-content:end;padding-bottom:6px}
+.final .spot{width:100%;flex:1;min-height:110px}
+.final small{font:500 10px/1 var(--mono);letter-spacing:.22em;color:var(--navy)}
+.final b{padding:9px 18px;border-radius:999px;background:var(--navy);color:var(--white);font:600 14px/1 var(--kr)}
+.es-info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:center}
+.es-item{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:center;padding:18px 20px;border-radius:20px}
+.es-item .ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(150deg,#DCEAFA,var(--sky));font:600 11px/1 var(--display);color:var(--navy);box-shadow:inset 0 1px 0 #fff}
+.es-item small{display:block;font:500 10px/1 var(--mono);letter-spacing:.2em;color:var(--gray-2)}
+.es-item b{display:block;margin-top:6px;font:600 16px/1.35 var(--kr);letter-spacing:-.02em}
+.es-item .v{display:block;margin-top:7px;font:400 14px/1.5 var(--kr);color:var(--gray)}
+
+/* ===== PAGE 06 · DISCUSSION & SCHEDULE ===== */
+.p-plan{grid-template-rows:auto auto auto;align-content:center;row-gap:3vh}
+.plan-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.tl{list-style:none;margin:0;padding:22px 28px;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;border-radius:26px;position:relative}
+.tl li{position:relative;display:grid;gap:8px;padding-top:36px}
+.tl li::before{content:"";position:absolute;left:0;top:4px;width:18px;height:18px;border-radius:50%;background:var(--white);border:2px solid var(--sky);z-index:1}
+.tl li:first-child::before{background:var(--navy);border-color:var(--navy);box-shadow:0 0 0 6px rgba(187,215,244,.6)}
+.tl li::after{content:"";position:absolute;left:18px;right:-12px;top:12px;height:2px;background:linear-gradient(90deg,var(--sky),rgba(187,215,244,.35))}
+.tl li:last-child::after{display:none}
+.tl b{font:600 16px/1.35 var(--kr);letter-spacing:-.02em}
+.tl .d{font:500 13px/1 var(--display);color:var(--navy)}
+.tl .tbd{justify-self:start;font-size:11px;padding:3px 8px}
+.plan-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.25fr);gap:16px;align-items:stretch}
+.col{padding:24px 26px;border-radius:26px;display:grid;align-content:start;gap:14px}
+.col h3{margin:0;display:flex;align-items:center;justify-content:space-between;font:700 18px/1.3 var(--kr);letter-spacing:-.02em}
+.col h3 small{font:500 10px/1 var(--mono);letter-spacing:.2em;color:inherit;opacity:.65}
+.col.decide{color:var(--white);background:radial-gradient(80% 70% at 92% 0%,rgba(187,215,244,.4),rgba(187,215,244,0) 62%),linear-gradient(155deg,#2A5491 0%,var(--navy) 55%,#11284D 100%);
+  box-shadow:0 40px 80px -40px rgba(24,55,102,.7),inset 0 1px 0 rgba(255,255,255,.2)}
+.decide ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.decide li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;font:500 15px/1.5 var(--kr)}
+.decide li::before{content:"✓";display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--sky);color:var(--navy);font:700 12px/1 var(--display)}
+.decide .empty{display:grid;gap:10px;padding:18px;border-radius:18px;border:1.5px dashed rgba(187,215,244,.45);font:400 14px/1.6 var(--kr);color:rgba(255,255,255,.78)}
+.decide .empty i{display:block;height:10px;border-radius:5px;background:rgba(187,215,244,.18)}
+.decide .empty i:nth-child(2){width:80%} .decide .empty i:nth-child(3){width:60%}
+.disc{display:grid;gap:0}
+.disc div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.disc small{font:600 13px/1.5 var(--kr);color:var(--navy)}
+.disc span{font:400 14px/1.5 var(--kr);color:var(--gray)}
+.tasks{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.tasks th{padding:0 0 10px;text-align:left;font:500 10px/1 var(--mono);letter-spacing:.18em;color:var(--gray-2)}
+.tasks td{padding:12px 0;border-top:1px solid var(--line);font:500 14px/1.45 var(--kr);vertical-align:middle}
+.tasks td + td{padding-left:10px}
+.tasks .tbd{font-size:11px;padding:3px 8px}
+
+/* ===== PAGE 07 · CLOSING ===== */
+.p-end{place-items:center;text-align:center}
+.end{display:grid;gap:24px;justify-items:center;max-width:min(1100px,100%)}
+.end .display{font-size:clamp(44px,4.9vw,96px)}
+.goals{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:6px}
+.goals span{display:flex;align-items:center;gap:12px;padding:14px 22px;border-radius:999px;font:600 16px/1 var(--kr)}
+.goals i{font:400 12px/1 var(--display);font-style:normal;color:var(--navy);opacity:.6}
+.thanks{display:flex;align-items:center;gap:18px;margin-top:12px}
+.thanks b{font:700 clamp(22px,1.6vw,30px)/1 var(--kr);letter-spacing:-.03em}
+.thanks .pill{padding:10px 16px;border-radius:999px;background:var(--navy);color:var(--white);font:500 12px/1 var(--mono);letter-spacing:.18em}
+
+/* ---------- HUD ---------- */
+.hud{position:fixed;left:0;right:0;z-index:5;pointer-events:none;padding-left:max(16px,3.6vw,env(safe-area-inset-left,0px));padding-right:max(16px,3.6vw,env(safe-area-inset-right,0px))}
+.hud-top{top:0;padding-top:calc(30px + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.brand{display:flex;align-items:center;gap:14px}
+.mark{position:relative;width:42px;height:42px;border-radius:13px;background:linear-gradient(150deg,var(--navy-2),var(--navy));box-shadow:0 12px 24px -12px rgba(24,55,102,.7),inset 0 1px 0 rgba(255,255,255,.25)}
+.mark::before{content:"";position:absolute;left:8px;top:14px;width:26px;height:13px;border-radius:7px;background:var(--white)}
+.mark::after{content:"";position:absolute;left:12px;top:18px;width:18px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--navy),var(--navy-2))}
+.brand b{display:block;font:600 14px/1.3 var(--kr);letter-spacing:-.01em}
+.brand small{display:block;margin-top:4px;font:500 10px/1 var(--mono);letter-spacing:.2em;color:var(--gray)}
+.chapter{text-align:right}
+.chapter span{font:500 11px/1 var(--mono);letter-spacing:.2em;color:var(--gray)}
+.chapter b{display:block;margin-top:8px;font:600 16px/1.2 var(--kr);letter-spacing:-.01em;color:var(--ink)}
+.hud-bottom{bottom:0;padding-bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;align-items:flex-end;gap:28px}
+.vp{display:grid;gap:7px;min-width:150px;font:500 10px/1 var(--mono);letter-spacing:.14em;color:var(--gray-2);white-space:nowrap}
+.vp b{font:500 22px/1 var(--display);letter-spacing:-.03em;color:var(--navy)}
+.vp b small{font-size:11px;letter-spacing:.1em;color:var(--gray-2)}
+.segs{flex:1;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.seg{pointer-events:auto;cursor:pointer;position:relative;border:0;background:none;padding:13px 0 0;text-align:left;color:var(--gray-2);font:500 10px/1 var(--mono);letter-spacing:.16em;transition:color .4s}
+.seg::before,.seg::after{content:"";position:absolute;left:0;top:0;height:3px;border-radius:3px}
+.seg::before{right:0;background:rgba(24,55,102,.1)}
+.seg::after{width:0;background:var(--navy);transition:width .9s var(--ease)}
+.seg.on{color:var(--navy)} .seg.on::after,.seg.done::after{width:100%}
+.seg.done::after{background:var(--sky)}
+.seg span{display:block;margin-top:7px;font:500 11px/1.2 var(--mono);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg:focus-visible,.nav button:focus-visible,.ag-list button:focus-visible{outline:2px solid var(--navy);outline-offset:4px}
+.nav{display:flex;gap:8px;pointer-events:auto}
+.nav button{width:50px;height:50px;border-radius:50%;border:1px solid var(--glass-edge);background:var(--glass);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  box-shadow:0 14px 28px -14px rgba(24,55,102,.45),inset 0 1px 0 #fff;color:var(--navy);font:400 17px/1 var(--display);cursor:pointer;display:grid;place-items:center;transition:background .3s,color .3s,transform .3s}
+.nav button svg{width:18px;height:18px}
+.nav button:hover{background:var(--navy);color:var(--white);transform:translateY(-2px)}
+.nav button:disabled{opacity:.35;cursor:default;transform:none;background:var(--glass);color:var(--navy)}
+#loader{position:fixed;inset:0;z-index:20;display:grid;place-items:center;background:var(--white);transition:opacity .9s ease,visibility .9s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .in{width:min(300px,70vw);display:grid;gap:16px;text-align:center}
+#loader p{margin:0;font:500 12px/1 var(--mono);letter-spacing:.24em;color:var(--navy)}
+#loader .bar{height:3px;border-radius:3px;background:var(--mist);overflow:hidden}
+#loader .bar i{display:block;height:100%;width:30%;border-radius:3px;background:linear-gradient(90deg,var(--sky),var(--navy));animation:ld 1.2s var(--ease) infinite}
+@keyframes ld{0%{transform:translateX(-110%)}100%{transform:translateX(360%)}}
+.toast{position:fixed;z-index:12;left:50%;bottom:calc(112px + env(safe-area-inset-bottom,0px));transform:translate(-50%,10px);padding:12px 20px;border-radius:999px;font:500 13px/1.4 var(--kr);color:var(--white);background:var(--navy);opacity:0;transition:.4s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- 작은 화면 ---------- */
+@media (max-width:1100px){
+  .p-council,.p-exhib,.p-esports{grid-template-columns:minmax(0,1fr);row-gap:24px;align-content:start}
+  .intro-top{max-width:100%}
+  .ag-list,.ev-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .intro-agenda,.ev-head,.ev-head-r{grid-template-columns:minmax(0,1fr)}
+  .ag-label{border-right:0;padding-right:0}
+  .plan-cols{grid-template-columns:minmax(0,1fr)}
+  .tl,.steps,.org-teams{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px}
+  .org-teams::before,.team::before,.steps li::after,.tl li::after{display:none}
+  .vp{display:none}
+  .ex-stage,.ev-stage{display:none}
+}
+@media (max-width:640px){
+  .pg{padding-top:calc(96px + env(safe-area-inset-top,0px));padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+  .hud-top{padding-top:calc(18px + env(safe-area-inset-top,0px))}
+  .brand small,.chapter b{display:none}
+  .seg span{display:none}
+  .ag-list,.ev-cards,.es-info,.profiles{grid-template-columns:minmax(0,1fr)}
+  .info-row{grid-template-columns:minmax(0,1fr);gap:10px}
+  .bracket{grid-template-columns:minmax(0,1fr)}
+  .bk-col::after{display:none}
+  .nav button{width:44px;height:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms!important;animation:none!important}
+  .pg.on .rv{transition-delay:0s!important}
+}
+</style>
+
+<div class="bg"></div>
+<div class="grid"></div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="sweep" id="sweep"><i></i></div>
+<div id="loader"><div class="in"><p>LOADING SCENE</p><div class="bar"><i></i></div></div></div>
+
+<header class="hud hud-top">
+  <div class="brand"><div class="mark" aria-hidden="true"></div><div><b id="brandDept">인덕대학교 게임&amp;VR콘텐츠디자인학과</b><small>DEPARTMENT MEETING</small></div></div>
+  <div class="chapter"><span id="chNo">PAGE 01 / 07</span><b id="chTitle">INTRO</b></div>
+</header>
+
+<main id="deck"></main>
+
+<footer class="hud hud-bottom">
+  <div class="vp"><span>PROGRESS</span><b id="prog">14<small>%</small></b></div>
+  <nav class="segs" id="segs" aria-label="장면 이동"></nav>
+  <div class="nav">
+    <button id="prev" aria-label="이전 페이지">←</button>
+    <button id="next" aria-label="다음 페이지">→</button>
+    <button id="fs" aria-label="전체 화면"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   화면 구성 — 위 MEETING_DATA를 읽어 7개 장면을 만듭니다
+   ===================================================================== */
+(function(){
+  const D = window.MEETING_DATA;
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+  const tbd = (v, l = "추후 입력") => (v && String(v).trim()) ? esc(v) : `<span class="tbd">${l}</span>`;
+  const pad = n => String(n).padStart(2, "0");
+  let d = 0; const rv = () => `rv" style="--d:${d++}`;     // 등장 순서
+  const reset = () => { d = 0; };
+
+  const PAGES = [
+    { key: "intro",   en: "INTRO",            kr: "학과 운영 회의" },
+    { key: "council", en: "STUDENT COUNCIL",  kr: "차기 학회장·대의원 당선" },
+    { key: "exhib",   en: "GRADUATION EXHIBITION", kr: "졸업전시위원회 구성 및 운영" },
+    { key: "events",  en: "DEPARTMENT EVENT", kr: "학과 이벤트 기획 및 운영" },
+    { key: "esports", en: "E-SPORTS",         kr: "학과 e스포츠 대회" },
+    { key: "plan",    en: "DISCUSSION",       kr: "종합 논의 및 향후 일정" },
+    { key: "closing", en: "CLOSING",          kr: "회의 마무리" }
+  ];
+  const head = (i, title, lead) => `
+    <div class="ph">
+      <div class="${rv()}"><span class="eyebrow">${pad(i + 1)} · ${PAGES[i].en}</span></div>
+      <h2 class="h-l ${rv()}">${title}</h2>
+      ${lead ? `<p class="lead ${rv()}">${lead}</p>` : ""}
+    </div>`;
+  const silhouette = `<svg viewBox="0 0 200 180" aria-hidden="true"><circle cx="100" cy="62" r="38" fill="#fff" fill-opacity=".75"/><path d="M22 180c4-46 38-74 78-74s74 28 78 74z" fill="#fff" fill-opacity=".75"/></svg>`;
+
+  const M = D.meta, C = D.council, X = D.exhibition, E = D.events, S = D.esports, P = D.plan, Z = D.closing;
+  const html = [];
+
+  /* 01 INTRO */
+  reset();
+  html.push(`<section class="pg p-intro" data-title="${PAGES[0].en}">
+    <div class="intro-top">
+      <div class="${rv()}"><span class="eyebrow">${esc(M.univ)} · Department Meeting</span></div>
+      <h1 class="display ${rv()}">GAME <span class="grad">&amp; VR</span><br>CONTENT DESIGN</h1>
+      <div class="intro-sub ${rv()}"><span class="kr-sub">${esc(M.subtitle)}</span><span class="dept">${esc(M.univ)} ${esc(M.dept)}</span></div>
+      <div class="meta ${rv()}">
+        <div class="glass"><small>DATE · 회의 일자</small><b>${tbd(M.date)}</b></div>
+        <div class="glass"><small>PLACE · 장소</small><b>${tbd(M.place)}</b></div>
+        <div class="glass"><small>PRESENTER · 발표</small><b>${tbd(M.presenter)}</b></div>
+      </div>
+    </div>
+    <div class="intro-agenda ${rv()}">
+      <div class="ag-label"><span class="lbl">Today's Agenda</span><b>회의 주요 안건</b></div>
+      <ol class="ag-list">${PAGES.slice(1, 6).map((p, j) => `
+        <li><button class="glass" type="button" data-go="${j + 1}"><span class="n">${pad(j + 1)}</span><b>${p.kr}</b><small>${p.en}</small></button></li>`).join("")}
+      </ol>
+    </div>
+  </section>`);
+
+  /* 02 STUDENT COUNCIL */
+  reset();
+  html.push(`<section class="pg p-council" data-title="${PAGES[1].en}">
+    <div class="council-left">
+      ${head(1, `차기 학회장·<span class="grad">대의원 당선</span>`, esc(C.lead))}
+      <div class="profiles" style="--n:${Math.min(C.members.length, 3)}">${C.members.map(m => `
+        <article class="profile glass ${rv()}">
+          <div class="photo">${m.photo ? `<img src="${esc(m.photo)}" alt="${esc(m.role)} ${esc(m.name)}">` : `<div class="ph-empty">${silhouette}<span>PHOTO</span></div>`}<span class="role-badge">${esc(m.role)}</span></div>
+          <div class="pinfo"><small>${esc(m.en)}</small><b>${tbd(m.name, "이름 입력 예정")}</b>${tbd(m.info, "학년 · 학번")}</div>
+        </article>`).join("")}
+      </div>
+      <div class="result ${rv()}"><span class="lbl">Election Result · 당선 결과</span>${tbd(C.result, "결과 입력 예정")}</div>
+    </div>
+    <div class="council-right">
+      <div class="info-row glass ${rv()}"><div class="k"><small>ORGANIZATION</small><b>학생자치 조직</b></div><div class="org-body">${C.org ? `<p>${esc(C.org)}</p>` : ""}<div class="depts" style="--n:${(C.departments || []).length}">${(C.departments || []).map(x => `<div class="dept-tile"><small>${esc(x.en)}</small><b>${esc(x.name)}</b>${tbd(x.head, "부장 미정")}</div>`).join("")}</div></div></div>
+      <div class="info-row glass ${rv()}"><div class="k"><small>ROLES</small><b>역할과 책임</b></div><ul>${C.roles.map(r => `<li class="r"><b>${esc(r.who)}</b><span>${esc(r.text)}</span></li>`).join("")}</ul></div>
+      <div class="info-row glass ${rv()}"><div class="k"><small>HANDOVER</small><b>인수인계</b></div><ul>${C.handover.map(h => `<li><span>${esc(h)}</span></li>`).join("")}</ul></div>
+      <div class="info-row glass ${rv()}"><div class="k"><small>DIRECTION</small><b>운영 방향</b></div><p>${tbd(C.direction, "차기 임원진 발표 후 입력")}</p></div>
+    </div>
+  </section>`);
+
+  /* 03 GRADUATION EXHIBITION */
+  reset();
+  html.push(`<section class="pg p-exhib" data-title="${PAGES[2].en}">
+    <div class="ex-left">
+      ${head(2, `졸업전시위원회<br><span class="grad">구성 및 운영</span>`, esc(X.purpose))}
+      <div class="ex-stage" id="ex-stage" aria-hidden="true"></div>
+      <div class="budget ${rv()}"><small>BUDGET &amp; OPERATION</small><h3>예산 및 운영 논의</h3>
+        <dl>${X.budget.map(b => `<div><dt>${esc(b.label)}</dt><dd>${tbd(b.value, "논의 예정")}</dd></div>`).join("")}</dl>
+      </div>
+    </div>
+    <div class="ex-right">
+      <div class="org glass ${rv()}">
+        <div class="org-head"><b>위원회 조직 및 담당 업무</b><span class="draft">구성(안)</span></div>
+        <div class="org-root"><small>CHAIR</small><b>위원장</b>${tbd(X.chair, "미정")}</div>
+        <div class="org-stem"></div>
+        <div class="org-teams" style="--n:${X.teams.length}">${X.teams.map((t, j) => `
+          <div class="team"><small>TEAM ${pad(j + 1)}</small><b>${esc(t.name)}</b><p>${esc(t.tasks)}</p>${tbd(t.lead, "담당 미정")}</div>`).join("")}
+        </div>
+      </div>
+      <div class="steps-card glass ${rv()}">
+        <span class="lbl">Preparation · 전시 준비 과정과 일정</span>
+        <ol class="steps" style="--n:${X.process.length}">${X.process.map(s => `<li><b>${esc(s.step)}</b>${tbd(s.date, "일정 미정")}</li>`).join("")}</ol>
+      </div>
+    </div>
+  </section>`);
+
+  /* 04 DEPARTMENT EVENT */
+  reset();
+  html.push(`<section class="pg p-events" data-title="${PAGES[3].en}">
+    <div class="ev-head">
+      ${head(3, `학과 이벤트 <span class="grad">기획 및 운영</span>`, "학과 구성원 모두가 참여하고, 재학생끼리 더 가까워질 수 있는 행사를 함께 만듭니다.")}
+      <div class="ev-head-r">
+        <div class="dirs">${E.direction.map((x, j) => `<div class="glass ${rv()}"><i>${pad(j + 1)}</i><b>${esc(x)}</b></div>`).join("")}</div>
+        <div class="ev-stage" id="ev-stage" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="ev-cards">${E.list.map((e, j) => `
+      <article class="ev glass ${rv()}">
+        <div class="ev-top"><small>EVENT ${pad(j + 1)} · ${esc(e.tag)}</small><span class="draft">아이디어(안)</span></div>
+        <div><h3>${esc(e.title)}</h3><p class="desc">${esc(e.desc)}</p></div>
+        <dl>
+          <div><dt>참여 대상</dt><dd>${tbd(e.target, "미정")}</dd></div>
+          <div><dt>운영 방식</dt><dd>${tbd(e.way, "미정")}</dd></div>
+          <div><dt>진행 일정</dt><dd>${tbd(e.date, "미정")}</dd></div>
+          <div><dt>준비 사항</dt><dd>${tbd(e.prep, "미정")}</dd></div>
+        </dl>
+      </article>`).join("")}
+      <article class="ev add ${rv()}"><span class="plus">+</span><b>새 행사 추가</b><p>아이디어를 더하면<br>카드가 자동으로 늘어납니다</p></article>
+    </div>
+  </section>`);
+
+  /* 05 E-SPORTS */
+  reset();
+  const tm = (i) => `<span>${tbd(S.teams[i], "TBD")}<em>${String.fromCharCode(65 + i)}</em></span>`;
+  html.push(`<section class="pg p-esports" data-title="${PAGES[4].en}">
+    <div class="es-left">
+      <div class="es-title">${head(4, `학과 <span class="grad">e스포츠 대회</span>`, esc(S.purpose))}<div class="es-stage" id="es-stage" aria-hidden="true"></div></div>
+      <div class="bracket glass ${rv()}">
+        <span class="lbl">Bracket · 대진표</span>
+        <div class="bk-col l"><div class="match">${tm(0)}${tm(1)}</div></div>
+        <div class="final"><div class="spot" id="br-final"></div><small>FINAL</small><b>우승</b></div>
+        <div class="bk-col r"><div class="match">${tm(2)}${tm(3)}</div></div>
+      </div>
+    </div>
+    <div class="es-info">${S.info.map(x => `
+      <div class="es-item glass ${rv()}"><span class="ic">${esc(x.k.slice(0, 2))}</span><div><small>${esc(x.k)}</small><b>${esc(x.label)}</b><span class="v">${tbd(x.value, "선정 예정")}</span></div></div>`).join("")}
+    </div>
+  </section>`);
+
+  /* 06 DISCUSSION & SCHEDULE */
+  reset();
+  html.push(`<section class="pg p-plan" data-title="${PAGES[5].en}">
+    <div class="plan-head">${head(5, `종합 논의 및 <span class="grad">향후 일정</span>`)}<div class="${rv()}"><span class="lead" style="display:block;max-width:30em">안건별 의견을 모아 결정 사항과 후속 업무를 정리합니다.</span></div></div>
+    <div class="${rv()}"><ol class="tl glass" style="--n:${P.timeline.length}">${P.timeline.map(t => `<li><b>${esc(t.title)}</b>${t.date ? `<span class="d">${esc(t.date)}</span>` : `<span class="tbd">일정 미정</span>`}</li>`).join("")}</ol></div>
+    <div class="plan-cols">
+      <div class="col decide ${rv()}"><h3>확정된 결정 사항<small>DECIDED</small></h3>
+        ${P.decisions.length ? `<ul>${P.decisions.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : `<div class="empty">회의에서 확정된 내용을 이곳에 정리합니다.<i></i><i></i><i></i></div>`}
+      </div>
+      <div class="col glass ${rv()}"><h3>추가 논의 사항<small>TO DISCUSS</small></h3>
+        <div class="disc">${P.discuss.map(x => `<div><small>${esc(x.topic)}</small><span>${esc(x.text)}</span></div>`).join("")}</div>
+      </div>
+      <div class="col glass ${rv()}"><h3>담당자별 후속 업무<small>FOLLOW-UP</small></h3>
+        <table class="tasks"><thead><tr><th>업무</th><th>담당</th><th>기한</th></tr></thead>
+        <tbody>${P.tasks.map(x => `<tr><td>${esc(x.task)}</td><td>${tbd(x.owner, "미정")}</td><td>${tbd(x.due, "미정")}</td></tr>`).join("")}</tbody></table>
+      </div>
+    </div>
+  </section>`);
+
+  /* 07 CLOSING */
+  reset();
+  html.push(`<section class="pg p-end" data-title="${PAGES[6].en}">
+    <div class="end">
+      <div class="${rv()}"><span class="eyebrow">07 · Closing</span></div>
+      <h2 class="display ${rv()}">BUILD OUR DEPARTMENT<br><span class="grad">TOGETHER</span></h2>
+      <p class="lead ${rv()}">${esc(Z.message)}</p>
+      <div class="goals ${rv()}">${Z.goals.map((g, j) => `<span class="glass"><i>${pad(j + 1)}</i>${esc(g)}</span>`).join("")}</div>
+      <div class="thanks ${rv()}"><b>감사합니다</b><span class="pill">Q&amp;A</span></div>
+    </div>
+  </section>`);
+
+  document.getElementById("deck").innerHTML = html.join("");
+  document.getElementById("brandDept").textContent = M.univ + " " + M.dept;
+
+  /* ---------- 장면 전환 ---------- */
+  const pages = [...document.querySelectorAll(".pg")];
+  const segs = document.getElementById("segs");
+  const chNo = document.getElementById("chNo"), chTitle = document.getElementById("chTitle"), prog = document.getElementById("prog");
+  const prev = document.getElementById("prev"), next = document.getElementById("next"), sweep = document.getElementById("sweep");
+  const listeners = [];
+  window.DECK = { i: 0, count: pages.length, on(fn){ listeners.push(fn); }, pages };
+
+  PAGES.forEach((p, i) => {
+    const b = document.createElement("button");
+    b.className = "seg"; b.type = "button";
+    b.innerHTML = pad(i + 1) + "<span></span>";
+    b.querySelector("span").textContent = p.en;
+    b.setAttribute("aria-label", (i + 1) + "페이지 · " + p.kr);
+    b.addEventListener("click", () => go(i));
+    segs.appendChild(b);
+  });
+  const segBtns = [...segs.children];
+  document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => go(+b.dataset.go)));
+
+  let cur = -1, last = 0;
+  function go(n){
+    n = Math.max(0, Math.min(pages.length - 1, n));
+    if (n === cur) return;
+    const dir = n > cur ? 1 : -1, old = pages[cur];
+    if (old){
+      old.classList.remove("on"); old.classList.add("out"); setTimeout(() => old.classList.remove("out"), 520);
+      sweep.classList.remove("go"); void sweep.offsetWidth; sweep.classList.add("go");
+    }
+    cur = n; window.DECK.i = n;
+    const p = pages[n];
+    p.scrollTop = 0; p.classList.add("on");
+    document.body.dataset.page = n;
+    chNo.textContent = "PAGE " + pad(n + 1) + " / " + pad(pages.length);
+    chTitle.textContent = PAGES[n].kr;
+    prog.innerHTML = Math.round((n + 1) / pages.length * 100) + "<small>%</small>";
+    segBtns.forEach((b, i) => { b.classList.toggle("on", i === n); b.classList.toggle("done", i < n); b.setAttribute("aria-current", i === n ? "step" : "false"); });
+    prev.disabled = n === 0; next.disabled = n === pages.length - 1;
+    listeners.forEach(fn => fn(n, dir));
+  }
+  window.DECK.go = go;
+  prev.addEventListener("click", () => go(cur - 1));
+  next.addEventListener("click", () => go(cur + 1));
+
+  const toastEl = document.getElementById("toast"); let tt;
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add("show"); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove("show"), 1800); }
+  function fullscreen(){
+    try {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(() => toast("이 화면에서는 전체 화면을 쓸 수 없어요"));
+      else document.exitFullscreen();
+    } catch (_) { toast("이 화면에서는 전체 화면을 쓸 수 없어요"); }
+  }
+  document.getElementById("fs").addEventListener("click", fullscreen);
+
+  addEventListener("keydown", e => {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    const k = e.key;
+    if (["ArrowRight","PageDown"," ","Enter","ArrowDown"].includes(k)){ e.preventDefault(); go(cur + 1); }
+    else if (["ArrowLeft","PageUp","Backspace","ArrowUp"].includes(k)){ e.preventDefault(); go(cur - 1); }
+    else if (k === "Home") go(0);
+    else if (k === "End") go(pages.length - 1);
+    else if (/^[1-9]$/.test(k) && +k <= pages.length) go(+k - 1);
+    else if (k === "f" || k === "F") fullscreen();
+  });
+  addEventListener("wheel", e => {
+    const p = pages[cur];
+    if (p.scrollHeight > p.clientHeight + 4) return;      // 작은 화면에서 내용이 넘치면 스크롤 우선
+    const now = Date.now();
+    if (now - last < 1000 || Math.abs(e.deltaY) < 24) return;
+    last = now; go(cur + (e.deltaY > 0 ? 1 : -1));
+  }, { passive: true });
+  let sx = 0, sy = 0;
+  addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+  addEventListener("touchend", e => {
+    if (window.DECK.dragging) return;
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.4) go(cur + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  go(0);
+  const loader = document.getElementById("loader");
+  window.DECK.ready = () => loader.classList.add("done");
+  setTimeout(window.DECK.ready, 5000);
+})();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script type="module">
+/* =====================================================================
+   3D 레이어 — Three.js r168 · 외부 모델 없이 코드로 모델링
+   곡면 VR 헤드셋 · 게임패드 · 학과 캐릭터 · 트로피 · 토폴로지 큐브 · 파티클
+   ===================================================================== */
+(async () => {
+const DECK = window.DECK;
+const CDN = "https://cdn.jsdelivr.net/npm/three@0.168.0/";
+let T, RoundedBoxGeometry, RoomEnvironment;
+try {
+  [T, { RoundedBoxGeometry }, { RoomEnvironment }] = await Promise.all([
+    import(CDN + "+esm"),
+    import(CDN + "examples/jsm/geometries/RoundedBoxGeometry.js/+esm"),
+    import(CDN + "examples/jsm/environments/RoomEnvironment.js/+esm")
+  ]);
+} catch (err) { console.warn("3D 레이어를 불러오지 못했습니다:", err); DECK.ready(); return; }
+
+const gsap = window.gsap;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let renderer;
+try { renderer = new T.WebGLRenderer({ canvas: document.getElementById("gl"), antialias: true, alpha: true, powerPreference: "high-performance" }); }
+catch (err) { console.warn("WebGL을 사용할 수 없습니다:", err); DECK.ready(); return; }
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.setClearColor(0xffffff, 0);
+renderer.outputColorSpace = T.SRGBColorSpace;
+renderer.toneMapping = T.NeutralToneMapping;
+renderer.toneMappingExposure = 1.02;
+
+const scene = new T.Scene();
+const pmrem = new T.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.9;
+const world = new T.Group(); scene.add(world);
+
+const camera = new T.PerspectiveCamera(30, innerWidth / innerHeight, 0.1, 100);
+camera.position.set(0, 0, 10);
+const key = new T.DirectionalLight(0xffffff, 1.6); key.position.set(4, 7, 8);
+const rim = new T.DirectionalLight(0xbbd7f4, 1.8); rim.position.set(-7, 3, -5);
+const under = new T.DirectionalLight(0xdde9f8, .5); under.position.set(0, -6, 4);
+scene.add(key, rim, under, new T.HemisphereLight(0xe8f1fc, 0xffffff, .7));
+
+/* ---------- 재질 ---------- */
+const Pm = (o) => new T.MeshPhysicalMaterial(o);
+const M = {
+  white: Pm({ color: "#fdfeff", roughness: .26, clearcoat: 1, clearcoatRoughness: .14 }),
+  pearl: Pm({ color: "#f4f8fd", roughness: .38, clearcoat: .6, sheen: .4, sheenColor: "#dbe9fa" }),
+  navy: Pm({ color: "#183766", roughness: .26, metalness: .05, clearcoat: 1, clearcoatRoughness: .1 }),
+  sky: Pm({ color: "#BBD7F4", roughness: .3, clearcoat: .9, clearcoatRoughness: .16 }),
+  skyMetal: Pm({ color: "#cfe2f7", roughness: .18, metalness: .7, clearcoat: 1 }),
+  visor: Pm({ color: "#0c1f40", roughness: .05, metalness: .3, clearcoat: 1, clearcoatRoughness: .02, iridescence: .55, iridescenceIOR: 1.35, iridescenceThicknessRange: [200, 600] }),
+  fabric: Pm({ color: "#2a4a7c", roughness: .92, sheen: 1, sheenColor: "#a9c8ee", sheenRoughness: .5 }),
+  cushion: Pm({ color: "#d4e4f6", roughness: .95, sheen: 1, sheenColor: "#ffffff", sheenRoughness: .4 }),
+  glow: new T.MeshStandardMaterial({ color: "#d6e8fb", emissive: "#9fcaf6", emissiveIntensity: 1.6, roughness: .3 }),
+  glass: Pm({ color: "#d8e8f9", roughness: .03, clearcoat: 1, transparent: true, opacity: .42, iridescence: 1, iridescenceIOR: 1.3, envMapIntensity: 1.6, depthWrite: false, side: T.DoubleSide }),
+  line: new T.LineBasicMaterial({ color: "#183766", transparent: true, opacity: .8 }),
+  lineSky: new T.LineBasicMaterial({ color: "#5D8BC9", transparent: true, opacity: .9 })
+};
+const V2 = (x, y) => new T.Vector2(x, y), V3 = (x, y, z) => new T.Vector3(x, y, z);
+const mesh = (g, m, x = 0, y = 0, z = 0) => { const o = new T.Mesh(g, m); o.position.set(x, y, z); return o; };
+const RB = (w, h, d, r, seg = 6) => new RoundedBoxGeometry(w, h, d, seg, r);
+const lathe = (pts, seg = 64) => new T.LatheGeometry(pts.map(p => V2(p[0], p[1])), seg);
+function roundRect(s, x, y, w, h, r){
+  s.moveTo(x + r, y); s.lineTo(x + w - r, y); s.quadraticCurveTo(x + w, y, x + w, y + r); s.lineTo(x + w, y + h - r);
+  s.quadraticCurveTo(x + w, y + h, x + w - r, y + h); s.lineTo(x + r, y + h); s.quadraticCurveTo(x, y + h, x, y + h - r);
+  s.lineTo(x, y + r); s.quadraticCurveTo(x, y, x + r, y);
+}
+// 원통면을 따라 휘게 (곡면 바이저)
+function bend(geo, R){
+  const p = geo.attributes.position, n = geo.attributes.normal;
+  for (let i = 0; i < p.count; i++){
+    const x = p.getX(i), z = p.getZ(i), a = x / R, r = R + z;
+    p.setX(i, r * Math.sin(a)); p.setZ(i, r * Math.cos(a) - R);
+    const nx = n.getX(i), nz = n.getZ(i), c = Math.cos(a), s = Math.sin(a);
+    n.setX(i, nx * c + nz * s); n.setZ(i, -nx * s + nz * c);
+  }
+  p.needsUpdate = n.needsUpdate = true; geo.computeBoundingBox(); return geo;
+}
+const bendPoint = (x, y, z, R) => { const a = x / R, r = R + z; return V3(r * Math.sin(a), y, r * Math.cos(a) - R); };
+
+const softTex = (stops) => {
+  const c = document.createElement("canvas"); c.width = c.height = 128;
+  const g = c.getContext("2d"), grd = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+  stops.forEach(([o, col]) => grd.addColorStop(o, col)); g.fillStyle = grd; g.fillRect(0, 0, 128, 128);
+  const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; return t;
+};
+const shadowTex = softTex([[0, "rgba(24,55,102,.5)"], [.45, "rgba(24,55,102,.16)"], [1, "rgba(24,55,102,0)"]]);
+const dotTex = softTex([[0, "rgba(255,255,255,1)"], [.35, "rgba(255,255,255,.85)"], [1, "rgba(255,255,255,0)"]]);
+
+/* =====================================================================
+   모델링
+   ===================================================================== */
+function headset(){
+  const g = new T.Group(), R = 1.18;
+  const shell = RB(1.8, 1.0, .2, .095, 12); shell.translate(0, 0, .32); g.add(mesh(bend(shell, R), M.visor));
+  const body = RB(1.7, .94, .5, .24, 12); body.translate(0, 0, .02); g.add(mesh(bend(body, R), M.white));
+  const trim = RB(1.76, .96, .05, .024, 12); trim.translate(0, 0, .22); g.add(mesh(bend(trim, R), M.skyMetal));
+  const pad = RB(1.54, .8, .24, .11, 10); pad.translate(0, -.01, -.3); g.add(mesh(bend(pad, R), M.cushion));
+  const strip = RB(.95, .022, .012, .005, 6); strip.translate(0, -.36, .43); g.add(mesh(bend(strip, R), M.glow));
+  [[-.6, -.3], [.6, -.3], [-.66, .3], [.66, .3]].forEach(([x, y]) => {
+    const p = bendPoint(x, y, .42, R);
+    const lens = mesh(new T.CylinderGeometry(.045, .045, .02, 32), M.navy, p.x, p.y, p.z);
+    lens.rotation.order = "YXZ"; lens.rotation.y = x / R; lens.rotation.x = Math.PI / 2; g.add(lens);
+  });
+  const ends = bendPoint(.86, 0, -.1, R);
+  const path = new T.CatmullRomCurve3([V3(-ends.x, 0, ends.z), V3(-.86, 0, -.6), V3(-.62, 0, -1.08), V3(0, 0, -1.3), V3(.62, 0, -1.08), V3(.86, 0, -.6), V3(ends.x, 0, ends.z)]);
+  const band = new T.Shape(); roundRect(band, -.03, -.13, .06, .26, .03);
+  g.add(mesh(new T.ExtrudeGeometry(band, { steps: 120, extrudePath: path, bevelEnabled: false }), M.fabric));
+  [-1, 1].forEach(s => {
+    const hinge = mesh(RB(.12, .3, .26, .05), M.white, s * ends.x, 0, ends.z); hinge.rotation.y = s * .65; g.add(hinge);
+  });
+  const dial = mesh(lathe([[0, 0], [.13, 0], [.14, .02], [.14, .07], [.12, .09], [0, .09]]), M.white, 0, 0, -1.29);
+  dial.rotation.x = -Math.PI / 2; g.add(dial);
+  const top = new T.CatmullRomCurve3([V3(0, .47, -.12), V3(0, .62, -.6), V3(0, .5, -1.1), V3(0, .14, -1.3)]);
+  const tb = new T.Shape(); roundRect(tb, -.08, -.018, .16, .036, .018);
+  g.add(mesh(new T.ExtrudeGeometry(tb, { steps: 60, extrudePath: top, bevelEnabled: false }), M.fabric));
+  return g;
+}
+function controller(){
+  const g = new T.Group(), s = new T.Shape();
+  s.moveTo(0, .34); s.lineTo(.46, .34);
+  s.bezierCurveTo(.66, .36, .78, .28, .82, .14); s.bezierCurveTo(.88, -.06, .95, -.32, .93, -.47);
+  s.bezierCurveTo(.91, -.65, .68, -.71, .58, -.58); s.bezierCurveTo(.5, -.47, .42, -.3, .28, -.28);
+  s.lineTo(-.28, -.28);
+  s.bezierCurveTo(-.42, -.3, -.5, -.47, -.58, -.58); s.bezierCurveTo(-.68, -.71, -.91, -.65, -.93, -.47);
+  s.bezierCurveTo(-.95, -.32, -.88, -.06, -.82, .14); s.bezierCurveTo(-.78, .28, -.66, .36, -.46, .34);
+  s.lineTo(0, .34);
+  const body = new T.ExtrudeGeometry(s, { depth: .2, bevelEnabled: true, bevelThickness: .11, bevelSize: .1, bevelSegments: 12, curveSegments: 64 });
+  body.translate(0, 0, -.1); g.add(mesh(body, M.white));
+  const F = .215;
+  g.add(mesh(RB(.5, .26, .04, .018), M.visor, 0, .1, F - .01));
+  g.add(mesh(new T.CylinderGeometry(.045, .045, .02, 32), M.glow, 0, .23, F + .002).rotateX(Math.PI / 2));
+  const stick = lathe([[0, 0], [.125, 0], [.13, .02], [.115, .045], [.06, .055], [.06, .1], [.112, .108], [.118, .135], [.104, .152], [.07, .143], [0, .14]], 64);
+  const well = new T.TorusGeometry(.15, .022, 16, 64);
+  [[-.5, .08], [.25, -.1]].forEach(([x, y]) => {
+    const st = mesh(stick, M.navy, x, y, F - .02); st.rotation.x = Math.PI / 2; g.add(st);
+    g.add(mesh(well, M.skyMetal, x, y, F - .005));
+  });
+  const cross = new T.Shape(), a = .036, L = .11;
+  cross.moveTo(-a, L); cross.lineTo(a, L); cross.lineTo(a, a); cross.lineTo(L, a); cross.lineTo(L, -a); cross.lineTo(a, -a);
+  cross.lineTo(a, -L); cross.lineTo(-a, -L); cross.lineTo(-a, -a); cross.lineTo(-L, -a); cross.lineTo(-L, a); cross.lineTo(-a, a); cross.lineTo(-a, L);
+  g.add(mesh(new T.ExtrudeGeometry(cross, { depth: .02, bevelEnabled: true, bevelThickness: .012, bevelSize: .01, bevelSegments: 4 }), M.navy, -.25, -.12, F - .012));
+  const btn = lathe([[0, 0], [.05, 0], [.052, .02], [.045, .035], [.025, .042], [0, .044]], 40);
+  [[.5, .17, M.navy], [.5, -.01, M.sky], [.41, .08, M.sky], [.59, .08, M.navy]].forEach(([x, y, m]) => { const b = mesh(btn, m, x, y, F - .01); b.rotation.x = Math.PI / 2; g.add(b); });
+  [-1, 1].forEach(sd => {
+    const bump = mesh(RB(.4, .085, .2, .04), M.sky, sd * .5, .37, -.02); bump.rotation.z = sd * -.12; g.add(bump);
+    g.add(mesh(new T.CapsuleGeometry(.018, .05, 4, 12).rotateZ(Math.PI / 2), M.navy, sd * .14, .23, F));
+  });
+  return g;
+}
+function character(){
+  const g = new T.Group();
+  g.add(mesh(lathe([[0, -.5], [.3, -.5], [.4, -.46], [.45, -.34], [.45, -.12], [.41, .06], [.33, .2], [.2, .29], [0, .31]], 72), M.white));
+  const belt = mesh(new T.TorusGeometry(.445, .025, 16, 72), M.sky, 0, -.2, 0); belt.rotation.x = Math.PI / 2; g.add(belt);
+  const head = new T.Group(); head.position.y = .78; head.scale.set(1.06, .93, .98); g.add(head);
+  head.add(mesh(new T.SphereGeometry(.5, 72, 48), M.white));
+  head.add(mesh(new T.SphereGeometry(.507, 72, 36, Math.PI / 2 - .82, 1.64, Math.PI / 2 - .4, .78), M.visor));
+  head.add(mesh(new T.SphereGeometry(.512, 72, 4, Math.PI / 2 - .86, 1.72, Math.PI / 2 + .38, .045), M.skyMetal));
+  [-.2, .2].forEach(h => {
+    const d = V3(Math.sin(h), .02, Math.cos(h)).normalize();
+    const eye = mesh(new T.CapsuleGeometry(.036, .07, 8, 16), M.glow); eye.position.copy(d.clone().multiplyScalar(.515));
+    eye.lookAt(d.clone().multiplyScalar(2)); eye.scale.set(1, 1, .5); head.add(eye);
+  });
+  const cup = lathe([[0, 0], [.17, 0], [.18, .03], [.165, .1], [.12, .13], [0, .13]], 56);
+  [-1, 1].forEach(sd => {
+    const c = mesh(cup, M.navy, sd * .48, 0, 0); c.rotation.z = sd * -Math.PI / 2; head.add(c);
+    const ring = mesh(new T.TorusGeometry(.12, .02, 12, 40), M.sky, sd * .6, 0, 0); ring.rotation.y = Math.PI / 2; head.add(ring);
+    const arm = mesh(new T.CapsuleGeometry(.1, .24, 10, 20), M.white, sd * .52, -.08, .02); arm.rotation.z = sd * .32; g.add(arm);
+  });
+  head.add(mesh(new T.TorusGeometry(.55, .038, 16, 72, Math.PI), M.navy));
+  g.add(mesh(new T.CylinderGeometry(.014, .014, .2, 10), M.navy, 0, 1.36, -.05));
+  g.add(mesh(new T.SphereGeometry(.055, 24, 16), M.glow, 0, 1.47, -.05));
+  g.add(mesh(lathe([[0, -.72], [.6, -.72], [.64, -.68], [.64, -.6], [.6, -.57], [.5, -.56], [0, -.56]], 80), M.pearl));
+  const gr = mesh(new T.TorusGeometry(.62, .012, 8, 96), M.glow, 0, -.62, 0); gr.rotation.x = Math.PI / 2; g.add(gr);
+  return g;
+}
+function trophy(){
+  const g = new T.Group();
+  const cupM = M.skyMetal, baseM = M.navy;
+  const cupG = lathe([[0, .02], [.1, .02], [.14, .06], [.32, .16], [.42, .34], [.46, .58], [.47, .7], [.44, .7], [.42, .58], [.38, .36], [.29, .2], [.12, .1], [0, .09]], 96);
+  cupG.computeVertexNormals();
+  const cup = mesh(cupG, cupM); cup.material = cupM.clone(); cup.material.side = T.DoubleSide; g.add(cup);
+  g.add(mesh(lathe([[0, -.3], [.07, -.3], [.06, -.1], [.08, -.02], [.12, .03], [0, .03]], 48), cupM));
+  g.add(mesh(lathe([[0, -.62], [.36, -.62], [.37, -.58], [.36, -.46], [.3, -.42], [.26, -.32], [.1, -.3], [0, -.3]], 72), baseM));
+  g.add(mesh(new T.TorusGeometry(.33, .014, 8, 72).rotateX(Math.PI / 2), M.glow, 0, -.45, 0));
+  [-1, 1].forEach(s => { const h = mesh(new T.TorusGeometry(.14, .035, 16, 40, Math.PI * 1.2), cupM, s * .47, .48, 0); h.rotation.z = s > 0 ? -Math.PI * .6 : Math.PI * .4; g.add(h); });
+  const star = new T.Shape(); for (let i = 0; i < 10; i++){ const r = i % 2 ? .05 : .11, a = i / 10 * Math.PI * 2 + Math.PI / 2; i ? star.lineTo(Math.cos(a) * r, Math.sin(a) * r) : star.moveTo(Math.cos(a) * r, Math.sin(a) * r); }
+  g.add(mesh(new T.ExtrudeGeometry(star, { depth: .02, bevelEnabled: true, bevelThickness: .01, bevelSize: .008, bevelSegments: 3 }), M.navy, 0, .36, .4));
+  return g;
+}
+function topoCube(){
+  const g = new T.Group(), S = .9;
+  g.add(mesh(RB(S, S, S, .05, 4), M.white));
+  g.add(new T.LineSegments(new T.WireframeGeometry(new T.BoxGeometry(S + .01, S + .01, S + .01, 3, 3, 3)), M.lineSky));
+  g.add(new T.LineSegments(new T.EdgesGeometry(new T.BoxGeometry(S + .02, S + .02, S + .02)), M.line));
+  const vg = new T.SphereGeometry(.035, 16, 12);
+  for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) g.add(mesh(vg, M.navy, x * (S / 2 + .01), y * (S / 2 + .01), z * (S / 2 + .01)));
+  g.add(mesh(new T.PlaneGeometry(S / 3, S / 3), new T.MeshBasicMaterial({ color: "#BBD7F4", transparent: true, opacity: .85 }), 0, 0, S / 2 + .012));
+  return g;
+}
+function subdivBall(){ const g = new T.Group(), geo = new T.IcosahedronGeometry(.6, 1); const m = M.sky.clone(); m.flatShading = true; g.add(new T.Mesh(geo, m)); g.add(new T.LineSegments(new T.EdgesGeometry(geo, 1), M.line)); return g; }
+function knot(){ return mesh(new T.TorusKnotGeometry(.4, .13, 260, 32, 2, 3), M.white); }
+function glassBall(){ const g = new T.Group(); g.add(mesh(new T.SphereGeometry(.2, 40, 28), M.navy)); g.add(mesh(new T.SphereGeometry(.5, 72, 48), M.glass)); return g; }
+function ring(){ const g = new T.Group(); g.add(mesh(new T.TorusGeometry(.5, .07, 40, 128), M.skyMetal)); g.add(mesh(new T.TorusGeometry(.34, .02, 16, 96), M.navy)); return g; }
+function pill(){ return mesh(new T.CapsuleGeometry(.22, .55, 16, 40), M.navy); }
+
+/* ---------- 계층: outer(배치) > inner(장면별 회전) > user(드래그) > float(대기 모션) > model ---------- */
+const OBJ = {}, pickables = [];
+function wrap(name, model, phase){
+  const box = new T.Box3().setFromObject(model), size = V3(0, 0, 0), c = V3(0, 0, 0);
+  box.getSize(size); box.getCenter(c);
+  const k = 1.6 / Math.max(size.x, size.y, size.z);
+  model.scale.setScalar(k); model.position.copy(c).multiplyScalar(-k);
+  const float = new T.Group(); float.add(model);
+  const user = new T.Group(); user.add(float);
+  const inner = new T.Group(); inner.add(user);
+  const outer = new T.Group(); outer.add(inner);
+  const sh = new T.Mesh(new T.PlaneGeometry(1, 1), new T.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, opacity: .5 }));
+  sh.scale.set(1.5, .3, 1); sh.position.set(0, -1.05, -.5); sh.renderOrder = -1; outer.add(sh);
+  outer.scale.setScalar(0.0001); world.add(outer);
+  const o = { name, outer, inner, user, float, sh, phase, hover: 0, vx: 0, vy: 0, on: false };
+  model.traverse(m => { if (m.isMesh){ m.userData.obj = o; pickables.push(m); } });
+  OBJ[name] = o;
+}
+wrap("headset", headset(), 0); wrap("pad", controller(), 1.3); wrap("bot", character(), 2.1); wrap("trophy", trophy(), 4.6);
+wrap("knot", knot(), 3.4); wrap("ico", subdivBall(), 4.2); wrap("glass", glassBall(), 5.1); wrap("cube", topoCube(), .7);
+wrap("ring", ring(), 2.8); wrap("pill", pill(), 3.9);
+
+/* ---------- 파티클 ---------- */
+const PN = 240, pPos = new Float32Array(PN * 3), pCol = new Float32Array(PN * 3), pSpd = new Float32Array(PN);
+const cNavy = new T.Color("#2F5A96"), cSky = new T.Color("#9CC3EE");
+for (let i = 0; i < PN; i++){
+  pPos[i * 3] = (Math.random() * 2 - 1) * 9; pPos[i * 3 + 1] = (Math.random() * 2 - 1) * 5.5; pPos[i * 3 + 2] = -4 + Math.random() * 5;
+  (Math.random() < .25 ? cNavy : cSky).toArray(pCol, i * 3); pSpd[i] = .04 + Math.random() * .1;
+}
+const pGeo = new T.BufferGeometry();
+pGeo.setAttribute("position", new T.BufferAttribute(pPos, 3)); pGeo.setAttribute("color", new T.BufferAttribute(pCol, 3));
+const particles = new T.Points(pGeo, new T.PointsMaterial({ size: .07, map: dotTex, vertexColors: true, transparent: true, opacity: .55, depthWrite: false, sizeAttenuation: true }));
+scene.add(particles);
+
+/* ---------- 장면별 배치 ----------
+   x, y: 화면 폭·높이 절반 기준 비율(-1~1) · s: 크기 · r: 회전 · el: 해당 HTML 요소에 고정(ax, ay: 요소 안 위치, fit: 요소 높이 대비 크기) */
+const LAYOUT = [
+  { headset: { x: .55, y: .2, s: 1.5, r: [.16, -.62, .04] }, glass: { x: .88, y: .64, s: .4 }, ring: { x: .3, y: .66, s: .38, r: [1.15, .35, 0] },
+    cube: { x: .9, y: -.12, s: .36, r: [.5, .65, .1] }, pill: { x: .32, y: -.12, s: .22, r: [0, 0, 1.1] } },
+  { ring: { x: .93, y: .74, s: .3, r: [1.2, .3, 0] }, glass: { x: -.02, y: .76, s: .26 } },
+  { cube: { el: "#ex-stage", ax: .36, ay: .5, fit: .72, r: [.5, .65, .1] }, ico: { el: "#ex-stage", ax: .74, ay: .42, fit: .44 } },
+  { bot: { el: "#ev-stage", ax: .5, ay: .5, fit: .95, r: [0, -.35, 0] }, ring: { el: "#ev-stage", ax: 1.05, ay: .2, fit: .2, r: [1.2, .4, 0] } },
+  { pad: { el: "#es-stage", ax: .5, ay: .55, fit: .85, r: [.55, -.35, .1] }, trophy: { el: "#br-final", ax: .5, ay: .45, fit: 1.05, r: [.1, 0, 0] } },
+  { glass: { x: .93, y: .74, s: .26 }, cube: { x: .82, y: .8, s: .18, r: [.5, .65, .1] } },
+  { headset: { x: -.74, y: .38, s: .84, r: [.2, .62, .05] }, pad: { x: .7, y: -.46, s: .76, r: [.55, -.42, .15] }, bot: { x: .76, y: .32, s: .84, r: [0, -.5, 0] },
+    trophy: { x: -.7, y: -.44, s: .62, r: [.1, .4, 0] }, knot: { x: -.3, y: -.82, s: .3 }, glass: { x: .34, y: .78, s: .26 }, cube: { x: -.34, y: .8, s: .22, r: [.5, .65, .1] },
+    ico: { x: -.95, y: -.02, s: .26 }, ring: { x: .95, y: .0, s: .28, r: [1.2, .3, 0] }, pill: { x: .32, y: -.84, s: .18, r: [0, 0, 1.2] } }
+];
+function halfDims(){ const hh = Math.tan(T.MathUtils.degToRad(camera.fov / 2)) * camera.position.z; return { hw: hh * camera.aspect, hh }; }
+function respScale(){ const a = innerWidth / innerHeight; return a < .8 ? .5 : a < 1.25 ? .72 : 1; }
+function resolve(L){
+  const { hw, hh } = halfDims();
+  if (L.el){
+    const el = document.querySelector(L.el);
+    if (el){
+      const r = el.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0){
+        const px = r.left + r.width * (L.ax ?? .5), py = r.top + r.height * (L.ay ?? .5);
+        return { x: (px / innerWidth * 2 - 1) * hw, y: -(py / innerHeight * 2 - 1) * hh, s: (L.fit || .7) * (r.height / innerHeight * hh * 2) / 1.6, r: L.r || [0, 0, 0] };
+      }
+    }
+    return null;                                   // 작은 화면에서 숨겨진 자리는 오브젝트도 숨김
+  }
+  return { x: L.x * hw, y: L.y * hh, s: (L.s || 0) * respScale(), r: L.r || [0, 0, 0] };
+}
+function apply(i, dur){
+  const lay = LAYOUT[i] || {}, d = reduce ? 0 : dur;
+  Object.values(OBJ).forEach((o, j) => {
+    const t = lay[o.name] ? resolve(lay[o.name]) : null, dl = d ? j * .03 : 0;
+    if (t){
+      o.on = true;
+      gsap.to(o.outer.position, { x: t.x, y: t.y, z: 0, duration: d, ease: "expo.inOut", delay: dl, overwrite: true });
+      gsap.to(o.outer.scale, { x: t.s, y: t.s, z: t.s, duration: d, ease: "expo.inOut", delay: dl, overwrite: true });
+      gsap.to(o.inner.rotation, { x: t.r[0], y: t.r[1], z: t.r[2], duration: d * 1.1, ease: "power3.inOut", overwrite: true });
+    } else {
+      o.on = false;
+      gsap.to(o.outer.scale, { x: .0001, y: .0001, z: .0001, duration: d * .6, ease: "power3.in", overwrite: true });
+      gsap.to(o.outer.position, { y: o.outer.position.y - .6, duration: d * .6, ease: "power3.in", overwrite: true });
+    }
+  });
+}
+// 장면 전환 시 카메라가 살짝 돌아 들어가는 느낌 (월드 스윙 + 파티클 흐름)
+function swing(dir){
+  if (reduce) return;
+  gsap.timeline({ overwrite: true })
+    .to(world.rotation, { y: dir * .09, duration: .7, ease: "power2.out" })
+    .to(world.rotation, { y: 0, duration: 1.3, ease: "power3.inOut" });
+  gsap.fromTo(particles.position, { x: 0 }, { x: -dir * 1.4, duration: 2, ease: "power3.out", onComplete(){ particles.position.x = 0; } });
+}
+let cur = DECK.i, settleT;
+DECK.on((n, dir) => { cur = n; apply(n, 1.6); swing(dir || 1); clearTimeout(settleT); settleT = setTimeout(() => apply(cur, .6), 1650); });
+DECK.pages.forEach((p, i) => p.addEventListener("scroll", () => { if (i === cur) apply(cur, 0); }, { passive: true }));
+
+/* ---------- 인터랙션: 호버하면 떠오르고, 드래그하면 돌려 볼 수 있음 ---------- */
+const ray = new T.Raycaster(), ndc = new T.Vector2(-9, -9), mouse = { x: 0, y: 0 }, cam = { x: 0, y: 0 };
+let hover = null, drag = null, lx = 0, ly = 0;
+const uiHit = (el) => el && el.closest && el.closest("button, a, .seg, .nav");
+const pick = () => { ray.setFromCamera(ndc, camera); const h = ray.intersectObjects(pickables.filter(m => m.userData.obj.on), false); return h.length ? h[0].object.userData.obj : null; };
+addEventListener("pointermove", e => {
+  mouse.x = e.clientX / innerWidth * 2 - 1; mouse.y = e.clientY / innerHeight * 2 - 1; ndc.set(mouse.x, -mouse.y);
+  if (drag){
+    const dx = e.clientX - lx, dy = e.clientY - ly; lx = e.clientX; ly = e.clientY;
+    drag.vy = dx * .012; drag.vx = dy * .008;
+    drag.user.rotation.y += drag.vy; drag.user.rotation.x = T.MathUtils.clamp(drag.user.rotation.x + drag.vx, -.9, .9);
+    return;
+  }
+  hover = uiHit(e.target) ? null : pick();
+  document.body.classList.toggle("grab", !!hover);
+});
+addEventListener("pointerdown", e => { if (uiHit(e.target) || !hover) return; drag = hover; DECK.dragging = true; lx = e.clientX; ly = e.clientY; document.body.classList.add("grabbing"); });
+addEventListener("pointerup", () => { if (drag){ drag = null; setTimeout(() => DECK.dragging = false, 50); document.body.classList.remove("grabbing"); } });
+addEventListener("resize", () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); apply(cur, 0); });
+
+/* ---------- 렌더 루프 ---------- */
+const clock = new T.Clock();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), .05), t = clock.elapsedTime;
+  if (!reduce){
+    cam.x += (mouse.x * .3 - cam.x) * .04; cam.y += (-mouse.y * .18 - cam.y) * .04;
+    camera.position.x = cam.x; camera.position.y = cam.y; camera.lookAt(0, 0, 0);
+    for (let i = 0; i < PN; i++){ let y = pPos[i * 3 + 1] + pSpd[i] * dt; if (y > 5.5) y = -5.5; pPos[i * 3 + 1] = y; }
+    pGeo.attributes.position.needsUpdate = true;
+  }
+  Object.values(OBJ).forEach(o => {
+    const b = reduce ? 0 : Math.sin(t * .85 + o.phase);
+    o.hover += ((o === hover || o === drag ? 1 : 0) - o.hover) * .1;
+    o.float.position.y = b * .07 + o.hover * .08;
+    if (!reduce){ o.float.rotation.y = Math.sin(t * .42 + o.phase) * .2; o.float.rotation.x = Math.sin(t * .33 + o.phase * 1.7) * .06; }
+    o.user.scale.setScalar(1 + o.hover * .06);
+    if (o !== drag){
+      o.vy *= .92; o.vx *= .9; o.user.rotation.y += o.vy; o.user.rotation.x += o.vx;
+      if (Math.abs(o.vy) < .002){ o.user.rotation.y *= .975; o.user.rotation.x *= .96; }
+    }
+    const k = 1 - b * .08 - o.hover * .12; o.sh.scale.set(1.5 * k, .3 * k, 1); o.sh.material.opacity = .48 - b * .1 - o.hover * .12;
+  });
+  renderer.render(scene, camera);
+});
+renderer.render(scene, camera);
+DECK.ready();
+apply(cur, 1.9);
+})();
+</script>
